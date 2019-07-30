@@ -1,0 +1,31 @@
+std::vector<std::vector<int>> boxBlur(std::vector<std::vector<int>> image) {
+    
+    int sum = 0;
+    vector<vector<int>> temp(image);
+    cout<<image.size();
+    for(int i = 1; i < image.size()-1; i++)
+    {
+        for(int j = 1; j < image[0].size(); j++)
+        {
+            sum = sum + (image[i-1][j-1] + image[i-1][j] + image[i-1][j+1] +
+                    image[i][j-1] + image[i][j] + image[i][j+1] +
+                    image[i+1][j-1] + image[i+1][j] + image[i+1][j+1]);
+            
+            temp[i][j] = sum / 9;
+            sum = 0;
+        }
+    }
+    
+    temp.erase(temp.begin());
+    temp.erase(temp.end());
+    
+    int tempsz = temp[0].size();
+    cout<<tempsz;
+    for(int i = 0; i < temp.size(); i++)
+    {
+        temp[i].erase(temp[i].begin());
+        temp[i].erase(temp[i].begin() + tempsz - 2);
+    }
+    
+    return temp;
+}
