@@ -1,0 +1,19 @@
+bool palindromeRearranging(std::string inputString) {
+
+    std::string temp;
+    for(auto it = inputString.begin(); it < inputString.end(); it++)
+    {
+        std::string::iterator it_1 = find(temp.begin(), temp.end(), *it);
+        if(it_1 == temp.end())
+            temp += *it;
+        else
+            temp.erase(it_1);
+    }
+    
+    if(inputString.size()%2 != 0 && temp.size() == 1)
+        return true;
+    else if(inputString.size()%2 == 0 && temp.size() == 0)    
+        return true;
+    else
+        return false;
+}
