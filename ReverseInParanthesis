@@ -1,0 +1,43 @@
+std::string reverseInParentheses(std::string inputString) {
+    
+    vector<char> tempVec;
+    stack<char> tempstack,Finalstack;
+    int j = 0;
+    
+    for(int i=0; i < inputString.length(); i++)
+    {
+        if(inputString[i] != ')')
+            tempstack.push(inputString[i]);
+        else if(inputString[i] == ')')
+        {
+            while(tempstack.top() != '(')
+            {
+                tempVec.push_back(tempstack.top());
+                tempstack.pop();
+            }
+            tempstack.pop();
+            while(j != tempVec.size())
+            {
+                tempstack.push(tempVec[j]);
+                j++;
+            }
+            tempVec.erase(tempVec.begin(),tempVec.end());
+            j=0;
+        }
+    }
+    while(!tempstack.empty())
+    {
+        Finalstack.push(tempstack.top());
+        tempstack.pop();
+    }
+    
+    inputString.erase(inputString.begin(),inputString.end());
+    
+    while(!Finalstack.empty())
+    {
+        inputString.push_back(Finalstack.top());
+        Finalstack.pop();
+    }
+    
+    return inputString;
+}
