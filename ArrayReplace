@@ -1,0 +1,12 @@
+std::vector<int> arrayReplace(std::vector<int> inputArray, int elemToReplace, int substitutionElem) {
+    
+    transform(inputArray.begin(), inputArray.end(), inputArray.begin(),
+              [&elemToReplace, &substitutionElem](int a){
+                  if(a == elemToReplace)
+                      return substitutionElem;
+                  else
+                      return a;
+              });
+    
+    return inputArray;
+}
