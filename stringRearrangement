@@ -8,10 +8,6 @@ bool stringsRearrangement(std::vector<std::string> inputArray) {
             count = 0;
             for(j = 0; j < inputArray[0].size(); j++)
             {
-                // int temp_1 = 0, temp_2 = 0, diffCount = 0;
-                // temp_1 = inputArray[i][j];
-                // temp_2 = inputArray[i+1][j];
-                // diffCount = abs(temp_1 - temp_2);
                 if(inputArray[i][j] != inputArray[i+1][j])
                     count ++;
                 if(count == 2)
