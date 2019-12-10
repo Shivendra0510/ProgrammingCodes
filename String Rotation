@@ -1,0 +1,41 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+void leftRotate(string &s, int i)
+{
+    list<char> ls;
+    ls.assign(s.begin(),s.end());
+    while(i  > 0){
+        i--;
+        ls.push_back(ls.front());
+        ls.pop_front();
+    }
+    ls.push_back(ls.front());
+    ls.pop_front();
+    s.assign(ls.begin(), ls.end());
+}
+
+void rightRotate(string &s, int i)
+{
+    list<char> ls;
+    ls.assign(s.begin(),s.end());
+    while(i  > 0){
+        i--;
+        ls.push_front(ls.back());
+        ls.pop_back();
+    }
+    s.assign(ls.begin(), ls.end());
+}
+
+int main()
+{
+    string s = "shivendra";
+    
+    leftRotate(s,2);
+    cout<<s<<endl;
+    rightRotate(s,4);
+    cout<<s;
+
+    return 0;
+}
